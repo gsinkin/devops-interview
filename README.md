@@ -21,3 +21,6 @@ curl http://localhost:5000/key/1234
 
 {"1234":{"test":true}}
 ```
+
+# Run job
+1. `python derp_job.py`

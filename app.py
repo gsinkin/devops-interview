@@ -34,7 +34,8 @@ def get_value(key_id):
     if result is None:
         result = db.session.query(KeyValue).filter(
             KeyValue.key_id == key_id
-        ).first().value
+        ).first()
+        result = result.value if result else None
     else:
         result = json.loads(result.decode())
     return jsonify({key_id: result if result else None})
