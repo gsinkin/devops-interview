@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URI")
 db = SQLAlchemy(app)
 redis_client = redis.Redis(
-    host=os.getenv("REDIS_HOSTNAME", "localhost"),
+    host=os.getenv("REDIS_HOST", "localhost"),
     port=os.getenv("REDIS_PORT", 6379),
     db=0
 )
@@ -30,6 +30,7 @@ db.create_all()
 
 @app.route("/key/<key_id>", methods=["GET"])
 def get_value(key_id):
+    print("Getting {}".format(key_id))
     result = redis_client.get(key_id)
     if result is None:
         result = db.session.query(KeyValue).filter(
@@ -43,6 +44,7 @@ def get_value(key_id):
 
 @app.route("/key/<key_id>", methods=["POST"])
 def set_value(key_id):
+    print("Setting {}".format(key_id))
     request_data = request.data.decode()
     request_json = json.loads(request_data)
     existing = db.session.query(KeyValue).filter(
