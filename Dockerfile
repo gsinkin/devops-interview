@@ -20,8 +20,8 @@ ENV DATABASE_URI= \
   REDIS_HOST= \
   REDIS_PORT=6379 \
   JOB_NAME= \
-  WEB_PORT=5000
+  PORT=5000
 
-EXPOSE $WEB_PORT
+EXPOSE $PORT
 
 ENTRYPOINT ["sh", "-c", "/usr/local/earnup/entrypoint.sh", "${JOB_NAME}"]

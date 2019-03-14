@@ -1,5 +1,6 @@
 # devops-interview
- A webserver and background processor for the DevOps interview
+A webserver and background processor for the DevOps interview.
+Requires Redis and a DB which supports the JSON type (sqlite, MySql>=-5.7, Postgres).
 
 # Getting started
 1. `python3 -m venv venv-devops-interview`

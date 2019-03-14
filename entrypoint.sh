@@ -2,5 +2,5 @@
 if [ -n "$1" ]; then
   echo $1 && python $1
 else
-  FLASK_APP=app.py flask run -p ${WEB_PORT}
+  FLASK_APP=app.py flask run -p ${PORT}
 fi
